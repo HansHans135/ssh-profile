@@ -6,7 +6,6 @@ COPY package*.json ./
 RUN npm install --production
 
 COPY server.js ./
-COPY host_key ./
 
 EXPOSE 22
 
