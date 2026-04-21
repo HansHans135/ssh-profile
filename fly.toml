@@ -3,9 +3,6 @@ primary_region = "nrt"
 
 [build]
 
-[http_service]
-  force_https = false
-
 [[services]]
   protocol = "tcp"
   internal_port = 22
@@ -15,7 +12,8 @@ primary_region = "nrt"
 
   [[services.tcp_checks]]
     interval = "15s"
-    timeout  = "2s"
+    timeout  = "5s"
+    grace_period = "10s"
 
 [env]
   PORT = "22"
