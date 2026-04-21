@@ -237,6 +237,9 @@ function render(stream, state) {
   stream.write(out);
 }
 
+process.on('uncaughtException', (err) => console.error('Uncaught:', err));
+process.on('unhandledRejection', (err) => console.error('Unhandled rejection:', err));
+
 // ── SSH server ────────────────────────────────────────────────────────────────
 const hostKey = process.env.SSH_HOST_KEY_B64
   ? Buffer.from(process.env.SSH_HOST_KEY_B64, 'base64')
@@ -372,6 +375,8 @@ new Server({ hostKeys: [hostKey] }, (client) => {
   client.on('error', () => {});
   client.on('close', () => console.log('Client disconnected'));
 
+}).on('error', (err) => {
+  console.error('SSH server error:', err);
 }).listen(PORT, '0.0.0.0', () => {
   console.log(`SSH profile server listening on port ${PORT}`);
 });
