@@ -1,0 +1,12 @@
+{
+  "name": "ssh-profile",
+  "version": "1.0.0",
+  "description": "Fake SSH server that shows a personal profile",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ssh2": "^1.15.0"
+  }
+}

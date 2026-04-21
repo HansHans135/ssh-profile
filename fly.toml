@@ -1,0 +1,21 @@
+app = "ssh-profile"
+primary_region = "nrt"
+
+[build]
+
+[http_service]
+  force_https = false
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 22
+
+  [[services.ports]]
+    port = 22
+
+  [[services.tcp_checks]]
+    interval = "15s"
+    timeout  = "2s"
+
+[env]
+  PORT = "22"
